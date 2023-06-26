@@ -101,6 +101,22 @@ kubectl apply -f https://github.com/knative/serving/releases/download/knative-v1
 ### Build and Deploy Workloads
 
 **JVM Mode:**
+```
+git clone https://github.com/mosesalphonse/Java-knative-serving.git
 
+cd Java-knative-serving
+
+```
+Update Application.properties file to make sure the correct image name, version and image repo are updated. 
+(Java-knative-serving/workloads/src/main/resources/application.properties)
+
+Refer the below **example**
+
+```
+quarkus.container-image.name={customer-jvm}
+quarkus.container-image.tag={v1}
+quarkus.container-image.registry={gcr.io}
+quarkus.container-image.group={sash-383710}
+```
 
 **Native Executable:**
