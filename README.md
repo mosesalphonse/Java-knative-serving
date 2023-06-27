@@ -48,7 +48,7 @@ kubectl apply -f https://github.com/knative/serving/releases/download/knative-v1
 
 ```
 
-Install Network layer:
+**Install Network layer:**
 
 There are differnt ways we can route traffic from outside the cluster, for example Istio, Contour, ets. I have used **Kourier** in this demo. 
 
@@ -104,7 +104,7 @@ kubectl apply -f https://github.com/knative/serving/releases/download/knative-v1
 ```
 git clone https://github.com/mosesalphonse/Java-knative-serving.git
 
-cd Java-knative-serving
+cd Java-knative-serving/workloads
 
 ```
 Update Application.properties file to make sure the correct image name, version and image repo are updated. 
@@ -112,11 +112,42 @@ Update Application.properties file to make sure the correct image name, version 
 
 Refer the below **example**
 
-```
+
 quarkus.container-image.name={customer-jvm}
 quarkus.container-image.tag={v1}
 quarkus.container-image.registry={gcr.io}
 quarkus.container-image.group={sash-383710}
+
+```
+mvn clean package -Dquarkus.container-image.push=true
+
+```
+**Note** : Make sure the image should be in the correct image repo. This image repo should be updated in the .yaml manifest (example : image: gcr.io/sash-383710/customer-jvm:v1)
+```
+cd ..
+
+kubectl apply -f yamls/jvm.yaml
+
+```
+**Native Executable:**
+
+Makesure image name updated in the application.properties as below;
+
+quarkus.container-image.name={customer-native}
+
+```
+cd workloads
+
+mvn package -Pnative -Dquarkus.native.container-build=true -Dquarkus.container-image.push=true
+
+```
+**Note** : Make sure the image should be in the correct image repo. This image repo should be updated in the .yaml manifest (example : gcr.io/sash-383710/customer-native:v1)
 ```
 
-**Native Executable:**
+cd ..
+
+kubectl apply -f yamls/jvm.yaml
+
+```
+
+### Verify:
