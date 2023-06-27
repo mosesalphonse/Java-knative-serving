@@ -169,8 +169,21 @@ Knative Service Endpoints:
 kubectl get ksvc
 
 ```
-Results could be something like this.
 
-Access the application using the above knative Service endpoints. example
+API resources can be accessed as below;
 
+```
+http://customer-jvm.default.{}.sslip.io/customer/info/Moses
+
+http://customer-native.default.{}.sslip.io/customer/info/Sashvin
+```
+
+Check the Cold start time using the below;
+
+```
+curl -o /dev/null -s -w 'Total: %{time_total}s\n'  http://customer-jvm.default.{}.sslip.io/customer/info/Moses
+
+curl -o /dev/null -s -w 'Total: %{time_total}s\n'  http://customer-native.default.{}.sslip.io/customer/info/Sashvin
+
+```
 
