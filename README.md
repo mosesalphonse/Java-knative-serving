@@ -152,11 +152,15 @@ kubectl apply -f yamls/native.yaml
 
 ### Verify:
 
-a) If no requests for 30 seconds, automatically pod will drain automatically. Which means there is no compute power used for that pod. If the app is no logger in use, there is no server running behind it. It is one of the serverless characteristics.
+a) If no requests for 30 seconds(configurable), automatically pod will drain automatically. Which means there is no compute power used for that pod. If the app is no logger in use, there is no server running behind it. It is one of the serverless characteristics.
 
-Example :
+**Example** :
 
 ![image](https://github.com/mosesalphonse/Java-knative-serving/assets/16347988/0a224c3d-aa23-4aa7-8cc2-858825d278f5)
+
+If any request are made after workloads wre down, it will spin up the envioemnet. Please note thet the JVM mode will take bit longer while Native executable mode are quiker because of AOT(Ahead Of Time) compiler. Refer thebelow screenshot
+
+![image](https://github.com/mosesalphonse/Java-knative-serving/assets/16347988/b89877c5-6ae5-48d5-bb9a-99d27a76fd5f)
 
 
 Knative Service Endpoints:
