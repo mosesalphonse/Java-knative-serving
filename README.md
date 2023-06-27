@@ -151,3 +151,15 @@ kubectl apply -f yamls/jvm.yaml
 ```
 
 ### Verify:
+
+Knative Service Endpoints:
+
+```
+kubectl get ksvc
+
+```
+Results could be something like this.
+
+Access the application using the above knative Service endpoints. example
+
+
