@@ -146,11 +146,18 @@ mvn package -Pnative -Dquarkus.native.container-build=true -Dquarkus.container-i
 
 cd ..
 
-kubectl apply -f yamls/jvm.yaml
+kubectl apply -f yamls/native.yaml
 
 ```
 
 ### Verify:
+
+a) If no requests for 30 seconds, automatically pod will drain automatically. Which means there is no compute power used for that pod. If the app is no logger in use, there is no server running behind it. It is one of the serverless characteristics.
+
+Example :
+
+![image](https://github.com/mosesalphonse/Java-knative-serving/assets/16347988/0a224c3d-aa23-4aa7-8cc2-858825d278f5)
+
 
 Knative Service Endpoints:
 
